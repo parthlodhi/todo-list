@@ -12,6 +12,9 @@ def index(request):
             all_items = List.objects.all
             messages.success(request, ('Item has been added to the list'))
             return render(request, 'index.html',{'all_items':all_items})
+        else:
+            messages.success(request, ('Please write something to be added in to the list'))
+            return redirect('index')    
     else:
         all_items=List.objects.all
         return render(request, 'index.html', {'all_items':all_items})
